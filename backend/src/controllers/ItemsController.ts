@@ -11,6 +11,7 @@ class ItemsController {
         id: item.id,
         title: item.title,
         image_url: `http://localhost:3333/uploads/${item.image}`
+       // http://localhost:3333/uploads/lampadas.svg
       }
     })
     return res.json(serializedItems)

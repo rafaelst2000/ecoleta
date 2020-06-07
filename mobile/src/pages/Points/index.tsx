@@ -18,6 +18,7 @@ interface Point{
   id: number;
   name: string;
   image: string;
+  image_url: string;
   latitude: number;
   longitude: number;
 }
@@ -37,7 +38,7 @@ const Points = () => {
   const navigation = useNavigation()
   const route = useRoute()
 
-  const routeParams = route.params as Params
+  const routeParams = route.params as Param
 
   useEffect(() => {
     async function loadPosition(){
@@ -94,7 +95,7 @@ const Points = () => {
   function handleNavigateBack(){
     navigation.goBack()
   }
-  function handleNavigateToDetail(id: string){
+  function handleNavigateToDetail(id: number){
     navigation.navigate('Detail', { point_id: id })
   }
 
@@ -129,8 +130,8 @@ const Points = () => {
                   }}
                 > 
                   <View style={styles.mapMarkerContainer}>
-                      <Image style={styles.mapMarkerImage} source={{ uri: point.image}} />
-                      <Text style={styles.mapMarkerTitle}>point.name</Text>
+                      <Image style={styles.mapMarkerImage} source={{ uri: point.image_url}} />
+                      <Text style={styles.mapMarkerTitle}>{point.name}</Text>
                   </View>
                   
                 </Marker>
